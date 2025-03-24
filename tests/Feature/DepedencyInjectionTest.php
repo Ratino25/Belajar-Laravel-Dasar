@@ -10,16 +10,14 @@ use Tests\TestCase;
 
 class DepedencyInjectionTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function testDependencyInjection()
     {
         $foo = new Foo();
         $bar = new Bar($foo);
 
-        self::assertEquals('Foo and Bar',$bar->bar());
+        self::assertEquals('Foo and Bar', $bar->bar());
+
     }
+
 }
