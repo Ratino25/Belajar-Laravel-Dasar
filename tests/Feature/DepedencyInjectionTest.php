@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class DepedencyInjectionTest extends TestCase
 {
+
     public function testDependencyInjection()
     {
         $foo = new Foo();
@@ -18,6 +19,5 @@ class DepedencyInjectionTest extends TestCase
         self::assertEquals('Foo and Bar', $bar->bar());
 
     }
-
 
 }
