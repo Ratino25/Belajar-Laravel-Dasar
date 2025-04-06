@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Data\Bar;
 use App\Data\Foo;
+use App\Services\HelloService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -24,5 +25,20 @@ class FooBarServiceProviderTest extends TestCase
         self::assertSame($foo1, $bar1->foo);
         self::assertSame($foo2, $bar2->foo);
     }
+
+    public function testPropertiSingletons()
+    {
+        $halloService1 = $this->app->make(HelloService::class);
+        $helloService2 = $this->app->make(HelloService::class);
+        self::assertSame($halloService1, $helloService2);
+
+        self::assertEquals('Halo Ratino',$halloService1->hello('Ratino'));
+    }
+
+    public function testEmpty()
+    {
+        self::assertTrue(true);
+    }
+
 
 }
