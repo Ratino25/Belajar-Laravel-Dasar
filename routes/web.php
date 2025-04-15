@@ -28,3 +28,8 @@ Route::fallback(function (){
 });
 
 Route::view('/hello', 'hello', ['name' => 'Ratino']);
+
+Route::get('hello-again', function(){
+   return view('hello',['name' => 'Ratino']);
+});
+
