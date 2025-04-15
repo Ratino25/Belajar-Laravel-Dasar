@@ -26,3 +26,5 @@ Route::redirect('/youtube', '/ratino');
 Route::fallback(function (){
     return "404 Not Found";
 });
+
+Route::view('/hello', 'hello', ['name' => 'Ratino']);
