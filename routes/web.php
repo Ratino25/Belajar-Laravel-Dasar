@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/ratino', function (){
+    return "Hello Ratino";
+});
+
+Route::redirect('/youtube', '/ratino');
+
+Route::fallback(function (){
+    return "404 Not Found";
+});
