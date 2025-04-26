@@ -28,5 +28,35 @@ class InputControllerTest extends TestCase
         ])->assertSeeText("Hello Aprilia");
     }
 
+    public function testInputAll()
+    {
+        $this->post('input/hello/input',[
+            "name" => [
+                "first" => "Aprilia",
+                "last" => "TriCahyani"
+            ]
+        ])->assertSeeText("name")->assertSeeText("first")
+            ->assertSeeText("last")->assertSeeText("Aprilia")
+            ->assertSeeText("TriCahyani");
+    }
+
+    public function testInputArray()
+    {
+        $this->post('/input/hello/array', [
+            "products" => [
+                [
+                    "name" => "Apple mac book pro",
+                    "price" => 3000000
+                ],
+                [
+                    "name" => "Samsung galaxy s10",
+                    "price" => 1500000
+                ]
+            ]
+        ])->assertSeeText("Apple mac book pro")
+            ->assertSeeText("Samsung galaxy s10");
+    }
+
+
 
 }
