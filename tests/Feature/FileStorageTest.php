@@ -21,7 +21,7 @@ class FileStorageTest extends TestCase
 
     public function testPublic()
     {
-        $fileSystem = Storage::disk('public');
+        $fileSystem = Storage::disk('public ');
         $fileSystem->put('file.txt', "Aprilia Tri Cahyani");
 
         $content = $fileSystem->get('file.txt');
