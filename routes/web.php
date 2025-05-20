@@ -84,7 +84,10 @@ Route::post('/input/filter/except', [\App\Http\Controllers\InputController::clas
 Route::post('/input/filter/merge', [\App\Http\Controllers\InputController::class, 'filterMerge']);
 
 
-Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload']);
+Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload'])
+    ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+
+
 Route::get('/response/hello', [\App\Http\Controllers\ResponseController::class, 'response']);
 Route::get('/response/header', [\App\Http\Controllers\ResponseController::class, 'header']);
 
@@ -104,4 +107,12 @@ Route::get('/redirect/name/{name}', [\App\Http\Controllers\RedirectController::c
     ->name('redirect-hello');
 Route::get('redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
 Route::get('/redirect/away', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
+
+Route::get("/middleware/api", function (){
+    return "Ok";
+})->middleware(["contoh:PZN,401"]);
+
+Route::get("/middleware/group", function (){
+    return "GROUP";
+})->middleware(['pzn']);
 
