@@ -110,6 +110,12 @@ Route::get('/redirect/to', [\App\Http\Controllers\RedirectController::class, 're
 Route::get('/redirect/name', [\App\Http\Controllers\RedirectController::class, 'redirectName']);
 Route::get('/redirect/name/{name}', [\App\Http\Controllers\RedirectController::class, 'redirectHello'])
     ->name('redirect-hello');
+Route::get('/redirect/named', function(){
+//   return route('redirect-hello', ['name' => 'Ratino']);
+//    return url()->route('redirect-hello', ['name' => 'Ratino']);
+    return \Illuminate\Support\Facades\URL::route('redirect-hello', ['name' => 'Ratino']);
+});
+
 Route::get('redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
 Route::get('/redirect/away', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
 
@@ -123,6 +129,15 @@ Route::middleware(['contoh:PZN,401'])->prefix('/middleware')->group(function () 
     });
 });
 
+Route::get('/url/action', function (){
+//   return action([\App\Http\Controllers\FormController::class, 'form']);
+//   return url()->actino([\App\Http\Controllers\FormController::class, 'form']);
+   return \Illuminate\Support\Facades\URL::action([\App\Http\Controllers\FormController::class, 'form']);
+});
+
 Route::get('/form', [\App\Http\Controllers\FormController::class, 'form']);
 Route::post('/form', [\App\Http\Controllers\FormController::class, 'submitForm']);
 
+Route::get('/url/current', function() {
+    return \Illuminate\Support\Facades\URL::full();
+});
